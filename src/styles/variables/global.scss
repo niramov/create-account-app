@@ -1,0 +1,16 @@
+:root {
+  // colors
+  --main-black: #2d3748;
+  --main-white: #ffffff;
+  --title-black: #1d1d1d;
+  --background-gradient: linear-gradient(
+    -44.42deg,
+    rgb(0, 122, 255) 0.743%,
+    rgb(15, 112, 218) 100%
+  );
+  --ellipse-gradient: linear-gradient(-44.42deg, rgb(15, 112, 218) 0.887%, rgb(0, 122, 255) 100%);
+
+  /* fonts */
+  --regular-font: Poppins-Regular, sans-serif;
+  --bold-font: Poppins-Bold, sans-serif;
+}

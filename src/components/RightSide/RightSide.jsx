@@ -1,6 +1,6 @@
 const RightSide = () => (
   <div>
-    <h1>RightSide</h1>
+    <p>RightSide</p>
   </div>
 );
 
