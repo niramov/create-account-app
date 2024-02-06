@@ -1,6 +1,38 @@
 .container {
+  position: relative;
   background: var(--background-gradient);
-  width: 814px;
-  height: 100vh;
+  width: 854px;
+  height: 100%;
   font-family: var(--regular-font);
+}
+
+.heading {
+  width: 554px;
+  margin: 64px auto 82px;
+
+  color: var(--main-white);
+  font-family: var(--bold-font);
+  font-size: 28px;
+  line-height: 150%;
+  text-align: center;
+}
+
+.ellipse {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 593px;
+  height: 593px;
+  border-radius: 75%;
+
+  background: var(--ellipse-gradient);
+
+  &Container {
+    position: relative;
+    margin: 0 auto;
+
+    width: 440px;
+    height: 630px;
+  }
 }
