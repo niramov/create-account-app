@@ -21,10 +21,11 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 10;
 
   width: 593px;
   height: 593px;
-  border-radius: 75%;
+  border-radius: 50%;
 
   background: var(--ellipse-gradient);
 
@@ -35,4 +36,29 @@
     width: 440px;
     height: 630px;
   }
+}
+
+.mainPhone {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+.minorLeftPhone {
+  position: absolute;
+  top: 73px;
+  left: 76px;
+  transform: translateX(-30%);
+  z-index: 100;
+}
+
+.minorRightPhone {
+  position: absolute;
+  top: 73px;
+  // right: -76px;
+  left: 261px;
+  transform: translateX(-30%);
+  z-index: 100;
 }
