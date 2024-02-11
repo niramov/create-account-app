@@ -1,1 +1,17 @@
+.container {
+  position: relative;
+  display: flex;
 
+  width: calc(100vw - 854px);
+  height: 100%;
+
+  font-family: var(--regular-font);
+}
+
+.wrapper {
+  display: flex;
+  margin: 64px 196px 32px 162px;
+  width: 748px;
+  height: 862px;
+  background-color: brown;
+}
