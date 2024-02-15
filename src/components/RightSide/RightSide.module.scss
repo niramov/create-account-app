@@ -160,3 +160,13 @@ a {
 .googlePlayLink {
   margin-right: 13px;
 }
+
+.errorText {
+  font-family: var(--regular-font);
+  font-size: 14px;
+  color: red;
+}
+
+.errorBorder {
+  border: 1px solid red;
+}

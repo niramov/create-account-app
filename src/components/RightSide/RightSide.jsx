@@ -23,10 +23,21 @@ const RightSide = () => {
   const signUpSchema = Yup.object().shape({
     firstName: Yup.string().required('Required field'),
     lastName: Yup.string().required('Required field'),
-    emailOrPhone: Yup.string()
-      .matches(/^[0-9]+$/, 'Must be a valid phone number or email')
-      .matches(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/, 'Must be a valid email')
-      .required('This field is required'),
+    emailOrPhone: Yup.string().test(
+      'emailOrPhone',
+      'Must be a valid email or phone number',
+      function (value) {
+        const emailRegExp = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        const phoneRegExp =
+          /^((\+?[1-9]{1,4}[-]*)|(\(\d{2,3}\)[-]*)|(\d{2,4})[-]*)*?\d{3,4}[-]?\d{3,4}?$/;
+
+        if (emailRegExp.test(value) || phoneRegExp.test(value)) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    ),
     dateOfBirth: Yup.date()
       .nullable()
       .max(new Date(), 'Birth date must be in the past')
@@ -50,15 +61,15 @@ const RightSide = () => {
     },
     validationSchema: signUpSchema,
     onSubmit: (values, { setSubmitting }) => {
-      navigate(routes.success);
+      navigate(routes.success());
       setSubmitting(false);
     },
   });
 
-  const { handleSubmit, handleChange, setFieldValue, values, touched, errors, isSubmitting } =
-    formik;
+  const { handleSubmit, handleChange, setFieldValue, values, touched, errors } = formik;
 
   const handleDateChange = (date) => {
+    navigate(routes.success());
     setFieldValue('dateOfBirth', date);
   };
 
@@ -77,23 +88,31 @@ const RightSide = () => {
                   <input
                     ref={inputRef}
                     type="text"
-                    className={s.field}
+                    className={`${s.field} ${
+                      touched.firstName && errors.firstName ? s.errorBorder : ''
+                    }`}
                     name="firstName"
                     onChange={handleChange}
                     value={values.firstName}
                   />
-                  {touched.firstName && errors.firstName && <div>{errors.firstName}</div>}
+                  {touched.firstName && errors.firstName && (
+                    <div className={s.errorText}>{errors.firstName}</div>
+                  )}
                 </div>
                 <div className={s.formField}>
                   <label htmlFor="lastName">Last Name</label>
                   <input
                     type="text"
-                    className={s.field}
+                    className={`${s.field} ${
+                      touched.lastName && errors.lastName ? s.errorBorder : ''
+                    }`}
                     name="lastName"
                     onChange={handleChange}
                     value={values.lastName}
                   />
-                  {touched.lastName && errors.lastName && <div>{errors.lastName}</div>}
+                  {touched.lastName && errors.lastName && (
+                    <div className={s.errorText}>{errors.lastName}</div>
+                  )}
                 </div>
               </div>
               <div className={s.formRow}>
@@ -101,18 +120,24 @@ const RightSide = () => {
                   <label htmlFor="emailOrPhone">Email or phone number</label>
                   <input
                     type="text"
-                    className={s.field}
+                    className={`${s.field} ${
+                      touched.emailOrPhone && errors.emailOrPhone ? s.errorBorder : ''
+                    }`}
                     name="emailOrPhone"
                     onChange={handleChange}
                     value={values.emailOrPhone}
                   />
-                  {touched.emailOrPhone && errors.emailOrPhone && <div>{errors.emailOrPhone}</div>}
+                  {touched.emailOrPhone && errors.emailOrPhone && (
+                    <div className={s.errorText}>{errors.emailOrPhone}</div>
+                  )}
                 </div>
                 <div className={s.formField}>
                   <label htmlFor="dateOfBirth">Date of birth (MM/DD/YY)</label>
                   <div className={s.datePickerContainer}>
                     <DatePicker
-                      className={s.field}
+                      className={`${s.field} ${
+                        touched.dateOfBirth && errors.dateOfBirth ? s.errorBorder : ''
+                      }`}
                       selected={values.dateOfBirth}
                       onChange={handleDateChange}
                       dateFormat="MM/dd/yyyy"
@@ -127,32 +152,40 @@ const RightSide = () => {
                       onClick={() => {}}
                     />
                   </div>
-                  {touched.dateOfBirth && errors.dateOfBirth && <div>{errors.dateOfBirth}</div>}
+                  {touched.dateOfBirth && errors.dateOfBirth && (
+                    <div className={s.errorText}>{errors.dateOfBirth}</div>
+                  )}
                 </div>
               </div>
               <div className={s.formRow}>
                 <div className={s.formField}>
                   <label htmlFor="password">Password</label>
                   <input
-                    type="text"
-                    className={s.field}
+                    type="password"
+                    className={`${s.field} ${
+                      touched.password && errors.password ? s.errorBorder : ''
+                    }`}
                     name="password"
                     onChange={handleChange}
                     value={values.password}
                   />
-                  {touched.password && errors.password && <div>{errors.password}</div>}
+                  {touched.password && errors.password && (
+                    <div className={s.errorText}>{errors.password}</div>
+                  )}
                 </div>
                 <div className={s.formField}>
-                  <label htmlFor="confirmPassword">Confirm password</label>
+                  <label htmlFor="passwordConfirm">Confirm password</label>
                   <input
-                    type="text"
-                    className={s.field}
-                    name="confirmPassword"
+                    type="password"
+                    className={`${s.field} ${
+                      touched.passwordConfirm && errors.passwordConfirm ? s.errorBorder : ''
+                    }`}
+                    name="passwordConfirm"
                     onChange={handleChange}
-                    value={values.confirmPassword}
+                    value={values.passwordConfirm}
                   />
-                  {touched.confirmPassword && errors.confirmPassword && (
-                    <div>{errors.confirmPasswordpassword}</div>
+                  {touched.passwordConfirm && errors.passwordConfirm && (
+                    <div className={s.errorText}>{errors.passwordConfirm}</div>
                   )}
                 </div>
               </div>
@@ -182,7 +215,9 @@ const RightSide = () => {
                     />
                     I agree to all the <a href="#">Terms</a> and <a href="#">Privacy policy</a>
                   </label>
-                  {touched.checkbox2 && errors.checkbox2 && <div>{errors.checkbox2}</div>}
+                  {touched.checkbox2 && errors.checkbox2 && (
+                    <div className={s.errorText}>{errors.checkbox2}</div>
+                  )}
                 </div>
               </div>
               <div className={s.formRow}>
