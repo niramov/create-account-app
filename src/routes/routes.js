@@ -1,5 +1,6 @@
 const routes = {
-  success: 'success',
+  main: () => '/',
+  success: () => 'redirect',
 };
 
 export default routes;

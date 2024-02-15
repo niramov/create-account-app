@@ -7,15 +7,18 @@ import { useNavigate } from 'react-router-dom';
 import s from './RightSide.module.scss';
 import mainLogo from '../../assets/img/logo.svg';
 import calendarIcon from '../../assets/img/calendarIcon.svg';
+import googleIcon from '../../assets/img/googleIcon.svg';
+import googlePlay from '../../assets/img/googlePlay.svg';
+import appStore from '../../assets/img/appStore.svg';
 import routes from '../../routes/routes';
 
 const RightSide = () => {
-  // const inputRef = useRef(null);
-  // const navigate = useNavigate();
+  const inputRef = useRef(null);
+  const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   inputRef.current.focus();
-  // }, []);
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
 
   const signUpSchema = Yup.object().shape({
     firstName: Yup.string().required('Required field'),
@@ -32,6 +35,7 @@ const RightSide = () => {
     passwordConfirm: Yup.string()
       .required('Required field')
       .oneOf([Yup.ref('password'), null], 'Confirm password'),
+    checkbox2: Yup.boolean().oneOf([true], 'Required field'),
   });
 
   const formik = useFormik({
@@ -42,10 +46,11 @@ const RightSide = () => {
       dateOfBirth: null,
       password: '',
       passwordConfirm: '',
+      checkbox2: false,
     },
     validationSchema: signUpSchema,
     onSubmit: (values, { setSubmitting }) => {
-      // navigate(routes.success);
+      navigate(routes.success);
       setSubmitting(false);
     },
   });
@@ -70,9 +75,9 @@ const RightSide = () => {
                 <div className={s.formField}>
                   <label htmlFor="firstName">First Name</label>
                   <input
-                    // ref={inputRef}
+                    ref={inputRef}
                     type="text"
-                    className={s.firstName}
+                    className={s.field}
                     name="firstName"
                     onChange={handleChange}
                     value={values.firstName}
@@ -83,7 +88,7 @@ const RightSide = () => {
                   <label htmlFor="lastName">Last Name</label>
                   <input
                     type="text"
-                    className={s.lastName}
+                    className={s.field}
                     name="lastName"
                     onChange={handleChange}
                     value={values.lastName}
@@ -96,7 +101,7 @@ const RightSide = () => {
                   <label htmlFor="emailOrPhone">Email or phone number</label>
                   <input
                     type="text"
-                    className={s.emailOrPhone}
+                    className={s.field}
                     name="emailOrPhone"
                     onChange={handleChange}
                     value={values.emailOrPhone}
@@ -107,10 +112,10 @@ const RightSide = () => {
                   <label htmlFor="dateOfBirth">Date of birth (MM/DD/YY)</label>
                   <div className={s.datePickerContainer}>
                     <DatePicker
+                      className={s.field}
                       selected={values.dateOfBirth}
                       onChange={handleDateChange}
                       dateFormat="MM/dd/yyyy"
-                      // placeholderText="Select a date"
                       showYearDropdown
                       showMonthDropdown
                       popperClassName="calendar-popper"
@@ -130,7 +135,7 @@ const RightSide = () => {
                   <label htmlFor="password">Password</label>
                   <input
                     type="text"
-                    className={s.password}
+                    className={s.field}
                     name="password"
                     onChange={handleChange}
                     value={values.password}
@@ -141,7 +146,7 @@ const RightSide = () => {
                   <label htmlFor="confirmPassword">Confirm password</label>
                   <input
                     type="text"
-                    className={s.confirmPassword}
+                    className={s.field}
                     name="confirmPassword"
                     onChange={handleChange}
                     value={values.confirmPassword}
@@ -151,7 +156,58 @@ const RightSide = () => {
                   )}
                 </div>
               </div>
+              <div className={s.checkboxContainer}>
+                <div className={s.checkboxRow}>
+                  <label>
+                    <input
+                      className={s.checkbox}
+                      type="checkbox"
+                      name="checkbox1"
+                      onChange={handleChange}
+                    />
+                    Remember me
+                  </label>
+                  <div className={s.forgotPasswordLink}>
+                    <a href="#">Forgot password?</a>
+                  </div>
+                </div>
+                <div className={s.checkboxRow}>
+                  <label>
+                    <input
+                      className={s.checkbox}
+                      type="checkbox"
+                      name="checkbox2"
+                      checked={values.checkbox2}
+                      onChange={(e) => setFieldValue('checkbox2', e.target.checked)}
+                    />
+                    I agree to all the <a href="#">Terms</a> and <a href="#">Privacy policy</a>
+                  </label>
+                  {touched.checkbox2 && errors.checkbox2 && <div>{errors.checkbox2}</div>}
+                </div>
+              </div>
+              <div className={s.formRow}>
+                <button type="submit" className={s.buttonCreate}>
+                  Create account
+                </button>
+                <a href="#" className={s.buttonGoogle}>
+                  <div className={s.buttonGoogleText}>
+                    <img src={googleIcon} className={s.googleIcon} alt="Google icon" />
+                    <span>Sign-in with google</span>
+                  </div>
+                </a>
+              </div>
             </form>
+            <div className={s.logIn}>
+              Don’t have an account? <a href="#">Log In</a>
+            </div>
+            <div className={s.linkContainer}>
+              <a href="#" className={s.googlePlayLink}>
+                <img src={googlePlay} alt="Google Play link" />
+              </a>
+              <a href="#" className={s.appStore}>
+                <img src={appStore} alt="Google Play link" />
+              </a>
+            </div>
           </div>
         </div>
       </div>
