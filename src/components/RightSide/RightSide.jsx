@@ -1,9 +1,12 @@
 import React, { useRef, useEffect } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import { useNavigate } from 'react-router-dom';
 import s from './RightSide.module.scss';
 import mainLogo from '../../assets/img/logo.svg';
+import calendarIcon from '../../assets/img/calendarIcon.svg';
 import routes from '../../routes/routes';
 
 const RightSide = () => {
@@ -36,7 +39,7 @@ const RightSide = () => {
       firstName: '',
       lastName: '',
       emailOrPhone: '',
-      dateOfBirth: '',
+      dateOfBirth: null,
       password: '',
       passwordConfirm: '',
     },
@@ -47,7 +50,12 @@ const RightSide = () => {
     },
   });
 
-  const { handleSubmit, handleChange, values, touched, errors, isSubmitting } = formik;
+  const { handleSubmit, handleChange, setFieldValue, values, touched, errors, isSubmitting } =
+    formik;
+
+  const handleDateChange = (date) => {
+    setFieldValue('dateOfBirth', date);
+  };
 
   return (
     <div className={s.container}>
@@ -97,13 +105,23 @@ const RightSide = () => {
                 </div>
                 <div className={s.formField}>
                   <label htmlFor="dateOfBirth">Date of birth (MM/DD/YY)</label>
-                  <input
-                    type="text"
-                    className={s.dateOfBirth}
-                    name="dateOfBirth"
-                    onChange={handleChange}
-                    value={values.dateOfBirth}
-                  />
+                  <div className={s.datePickerContainer}>
+                    <DatePicker
+                      selected={values.dateOfBirth}
+                      onChange={handleDateChange}
+                      dateFormat="MM/dd/yyyy"
+                      // placeholderText="Select a date"
+                      showYearDropdown
+                      showMonthDropdown
+                      popperClassName="calendar-popper"
+                    />
+                    <img
+                      src={calendarIcon}
+                      alt="Calendar"
+                      className={s.calendarIcon}
+                      onClick={() => {}}
+                    />
+                  </div>
                   {touched.dateOfBirth && errors.dateOfBirth && <div>{errors.dateOfBirth}</div>}
                 </div>
               </div>
