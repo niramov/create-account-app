@@ -2,6 +2,10 @@
 @import './variables/global.scss';
 @import '../assets/fonts/fonts.css';
 
+* {
+  box-sizing: border-box;
+}
+
 ul,
 li {
   display: flex; // remove extra space from bottom and top
