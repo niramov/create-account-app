@@ -1,9 +1,10 @@
 .container {
   position: relative;
   display: flex;
+  flex-shrink: 1;
 
-  width: calc(100vw - 814px);
-  height: 100%;
+  flex-basis: auto;
+  min-width: 550px;
 
   font-family: var(--regular-font);
 }
@@ -13,7 +14,7 @@
   flex-direction: column;
 
   margin: 64px 196px 32px 162px;
-
+  // flex-basis: 748px;
   width: 748px;
   height: 862px;
 
@@ -21,10 +22,13 @@
 }
 
 .logo {
+  flex-shrink: 1;
   margin-bottom: 61px;
 }
 
 .name {
+  flex-shrink: 1;
+
   font-family: var(--bold-font);
   color: #2d3748;
   font-size: 28px;
@@ -35,6 +39,8 @@
 }
 
 .description {
+  flex-shrink: 1;
+
   font-family: var(--regular-font);
   font-size: 14px;
   line-height: 140%;
@@ -44,6 +50,9 @@
 .form {
   display: flex;
   flex-wrap: wrap;
+
+  flex-shrink: 1;
+
   margin-top: 56px;
   margin-bottom: 32px;
 
@@ -147,6 +156,7 @@ a {
 
 .googleIcon {
   margin-right: 12px;
+  vertical-align: middle;
 }
 
 .logIn {
@@ -155,6 +165,10 @@ a {
   color: var(--main-black);
   text-align: center;
   margin-bottom: 115px;
+}
+
+.linkContainer {
+  text-align: left;
 }
 
 .googlePlayLink {
@@ -169,4 +183,150 @@ a {
 
 .errorBorder {
   border: 1px solid red;
+}
+
+@media screen and (width <= 1750px) {
+  .wrapper {
+    margin: 64px 196px 32px 62px;
+  }
+}
+
+@media screen and (width <= 1550px) {
+  .wrapper {
+    width: 487px;
+    margin: 64px 60px 32px 40px;
+  }
+
+  .field {
+    width: 223px;
+    height: 30px;
+  }
+
+  .buttonCreate {
+    width: 223px;
+    height: 30px;
+  }
+
+  .buttonGoogle {
+    width: 223px;
+    height: 30px;
+  }
+
+  .linkContainer {
+    text-align: center;
+  }
+
+  .logIn {
+    margin-bottom: 60px;
+  }
+}
+
+@media screen and (width <= 1280px) {
+  .logo {
+    margin-bottom: 30px;
+  }
+
+  .form {
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+
+  .checkbox {
+    &Row {
+      margin-bottom: 10px;
+    }
+
+    &Container {
+      margin-bottom: 10px;
+    }
+  }
+
+  .logIn {
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (width <= 980px) {
+  .wrapper {
+    width: 230px;
+    margin-top: 20px;
+  }
+
+  .logo {
+    margin-bottom: 15px;
+  }
+
+  .name {
+    font-size: 20px;
+  }
+
+  .description {
+    font-size: 10px;
+  }
+
+  label {
+    font-size: 12px;
+  }
+
+  .form {
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    &Row {
+      flex-shrink: 1;
+      flex-wrap: wrap;
+      gap: 0;
+    }
+
+    &Field {
+      margin-bottom: 10px;
+    }
+  }
+
+  .checkbox {
+    &Container {
+      margin-bottom: 0;
+    }
+
+    &Row {
+      flex-direction: column;
+    }
+
+    &Remember {
+      order: 2;
+    }
+  }
+
+  .forgotPasswordLink {
+    font-size: 12px;
+    margin-bottom: 5px;
+
+    order: 1;
+  }
+  .buttonCreate {
+    margin-bottom: 10px;
+  }
+
+  .logIn {
+    margin-bottom: 10px;
+  }
+
+  .googlePlayLink {
+    margin-right: 0;
+  }
+
+  .linkContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .downloadImg {
+    width: 100px;
+  }
+}
+
+@media screen and (width <= 768px) {
+  .wrapper {
+    margin: 30px auto;
+  }
 }

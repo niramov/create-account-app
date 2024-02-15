@@ -1,5 +1,9 @@
 .mainPage {
   display: flex;
   // width: 100vw;
-  height: 100vh;
+  flex: 1;
+
+  @media screen and (width <= 768px) {
+    flex-direction: column;
+  }
 }

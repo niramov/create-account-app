@@ -1,8 +1,13 @@
 .container {
+  display: flex;
   position: relative;
   background: var(--background-gradient);
   width: 814px;
-  height: 100%;
+  flex: 1;
+  height: 100vh;
+  flex-shrink: 2;
+  min-width: 400px;
+  flex-basis: auto;
   font-family: var(--regular-font);
 }
 
@@ -19,10 +24,13 @@
 
 .ellipse {
   position: absolute;
+
   left: 50%;
+  top: 230px;
   transform: translateX(-50%);
   z-index: 10;
 
+  flex-shrink: 1;
   width: 593px;
   height: 593px;
   border-radius: 50%;
@@ -57,8 +65,54 @@
 .minorRightPhone {
   position: absolute;
   top: 73px;
-  // right: -76px;
   left: 261px;
   transform: translateX(-30%);
+
   z-index: 100;
+}
+
+@media screen and (width <= 1280px) {
+  .heading {
+    font-size: 20px;
+    overflow-wrap: break-word;
+  }
+
+  .ellipse {
+    width: 400px;
+    height: 400px;
+
+    top: 180px;
+
+    &Container {
+      top: 0;
+
+      width: 290px;
+      height: 440px;
+    }
+  }
+
+  .mainPhone {
+    width: 230px;
+  }
+
+  .minorLeftPhone {
+    width: 180px;
+
+    top: 46px;
+    left: 47px;
+  }
+
+  .minorRightPhone {
+    width: 180px;
+
+    top: 46px;
+    left: 170px;
+  }
+
+  @media screen and (width <= 768px) {
+    .container {
+      width: 100%;
+      height: 800px;
+    }
+  }
 }
