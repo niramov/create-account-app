@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/create-account-app/static/css/main.bc198aea.css",
-    "main.js": "/create-account-app/static/js/main.b7a79d2f.js",
+    "main.js": "/create-account-app/static/js/main.2394aca1.js",
     "static/media/smallPhone.svg": "/create-account-app/static/media/smallPhone.6e56fd0d0384f8eecade93ec1be6e28c.svg",
     "static/media/mainPhone.svg": "/create-account-app/static/media/mainPhone.c6b218af8ef4b10f3b63ecc1d1ffdda4.svg",
     "static/media/logo.svg": "/create-account-app/static/media/logo.8c12ae9f864d6da0c505380564bd292c.svg",
@@ -13,10 +13,10 @@
     "static/media/calendarIcon.svg": "/create-account-app/static/media/calendarIcon.e826a1139d865ef9e6b454e00c6cc64e.svg",
     "index.html": "/create-account-app/index.html",
     "main.bc198aea.css.map": "/create-account-app/static/css/main.bc198aea.css.map",
-    "main.b7a79d2f.js.map": "/create-account-app/static/js/main.b7a79d2f.js.map"
+    "main.2394aca1.js.map": "/create-account-app/static/js/main.2394aca1.js.map"
   },
   "entrypoints": [
     "static/css/main.bc198aea.css",
-    "static/js/main.b7a79d2f.js"
+    "static/js/main.2394aca1.js"
   ]
 }
