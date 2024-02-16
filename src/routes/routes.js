@@ -1,6 +1,6 @@
 const routes = {
   main: () => '/create-account-app',
-  success: () => 'redirect',
+  success: () => '/redirect',
 };
 
 export default routes;
