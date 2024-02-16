@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/create-account-app/static/css/main.bc198aea.css",
+    "main.js": "/create-account-app/static/js/main.b7a79d2f.js",
+    "static/media/smallPhone.svg": "/create-account-app/static/media/smallPhone.6e56fd0d0384f8eecade93ec1be6e28c.svg",
+    "static/media/mainPhone.svg": "/create-account-app/static/media/mainPhone.c6b218af8ef4b10f3b63ecc1d1ffdda4.svg",
+    "static/media/logo.svg": "/create-account-app/static/media/logo.8c12ae9f864d6da0c505380564bd292c.svg",
+    "static/media/googleIcon.svg": "/create-account-app/static/media/googleIcon.b298811b6cda5d33a63f3cd46674f3fa.svg",
+    "static/media/googlePlay.svg": "/create-account-app/static/media/googlePlay.62b516246cc44eb8bd9e3cc04d742ddd.svg",
+    "static/media/appStore.svg": "/create-account-app/static/media/appStore.cc1a3d74e40af1423ab2c4cd54cf4b45.svg",
+    "static/media/poppins-v20-latin-600.woff2": "/create-account-app/static/media/poppins-v20-latin-600.91145014c0350c248ed2.woff2",
+    "static/media/poppins-v20-latin-regular.woff2": "/create-account-app/static/media/poppins-v20-latin-regular.405055dd680fa1dcdfa2.woff2",
+    "static/media/calendarIcon.svg": "/create-account-app/static/media/calendarIcon.e826a1139d865ef9e6b454e00c6cc64e.svg",
+    "index.html": "/create-account-app/index.html",
+    "main.bc198aea.css.map": "/create-account-app/static/css/main.bc198aea.css.map",
+    "main.b7a79d2f.js.map": "/create-account-app/static/js/main.b7a79d2f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bc198aea.css",
+    "static/js/main.b7a79d2f.js"
+  ]
+}
