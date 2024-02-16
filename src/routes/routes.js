@@ -1,5 +1,5 @@
 const routes = {
-  main: () => '/',
+  main: () => '/create-account-app',
   success: () => 'redirect',
 };
 
