@@ -1,6 +1,6 @@
 ## Description
 
-create-user-app - application using React + Formik + Yup that gives you oportunity to validate input data and create user.
+create-user-app - adaptive application using React + Formik + Yup that gives you oportunity to validate input data and create accont.
 
 ## Setup
 
@@ -13,4 +13,4 @@ $ make start
 
 ## Preview
 
-Click to go [Chat](https://frontend-project-12-production-1934.up.railway.app)
+Click to go [App](https://niramov.github.io/create-account-app/)
